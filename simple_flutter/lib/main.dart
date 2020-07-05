@@ -9,7 +9,7 @@ void main() {
       ),
       backgroundColor: Colors.amberAccent,
       body: Center(
-        child: Image(image: NetworkImage("https://raw.githubusercontent.com/go-flutter-desktop/go-flutter/master/mascot.png"),
+        child: Image(image: AssetImage("images/go10th.png"),
         ),
       ),
     ),
