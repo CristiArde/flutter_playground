@@ -1,0 +1,4 @@
+POST {{url}}/token
+Authorization: Basic {{authorization}}
+###
+
