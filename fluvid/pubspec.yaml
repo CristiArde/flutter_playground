@@ -26,6 +26,7 @@ dependencies:
 
   http: ^0.12.2
   enum_to_string: ^1.0.9
+  provider: ^4.3.2+1
 
 
   # The following adds the Cupertino Icons font to your application.
