@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluvid/services/api.dart';
+import 'package:fluvid/services/api_endpoints.dart';
 import 'package:fluvid/services/api_service.dart';
 
 void main() {
@@ -53,11 +54,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _token = "";
+  int _cases;
 
   void _incrementCounter() async{
     final apiService = APIService(API.sandbox());
     final token = await apiService.getAccessToken();
-    setState(() => _token = token);
+    final cases = await apiService.getQueryData(accessToken: token, query: Query.cases);
+    setState(() {
+      _token = token;
+      _cases = cases;
+    });
   }
 
   @override
@@ -101,6 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_token',
               style: Theme.of(context).textTheme.headline4,
             ),
+            if(_cases != null)
+              Text(
+                '$_cases',
+                style: Theme.of(context).textTheme.headline4,
+              ),
           ],
         ),
       ),

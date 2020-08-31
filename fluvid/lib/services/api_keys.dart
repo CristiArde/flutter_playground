@@ -1,3 +1,3 @@
 class APIKeys {
-  static String covidSandboxKey = "a28e18e6e70d775b25637b2b718989ca9e126d09291dfa4ad4ac8d6804a988a9";
+  static String covidSandboxKey = "73693209519c85492937a514c932050bf517ff70ef580e9118940450c12e073b";
 }

@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
 
   http: ^0.12.2
+  enum_to_string: ^1.0.9
 
 
   # The following adds the Cupertino Icons font to your application.
