@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:intl/intl.dart';
 import 'BaseModel.dart';
 
@@ -20,11 +19,9 @@ Future selectDate(BuildContext inContext, BaseModel inModel, String inDateString
   DateTime initialDate = DateTime.now();
 
   // If editing, set the initialDate to the current birthday, if any.
-  if (inDateString != null) {
-    List dateParts = inDateString.split(",");
-    // Create a DateTime using the year, month and day from dateParts.
-    initialDate = DateTime(int.parse(dateParts[0]), int.parse(dateParts[1]), int.parse(dateParts[2]));
-  }
+  List dateParts = inDateString.split(",");
+  // Create a DateTime using the year, month and day from dateParts.
+  initialDate = DateTime(int.parse(dateParts[0]), int.parse(dateParts[1]), int.parse(dateParts[2]));
 
   // Now request the date.
   DateTime? picked = await showDatePicker(
