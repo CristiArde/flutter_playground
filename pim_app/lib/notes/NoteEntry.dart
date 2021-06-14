@@ -11,7 +11,7 @@ class NoteEntry extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   NoteEntry() {
-    _titleEditingController.addListener(() => noteModel.entityBeingEdited.tile = _titleEditingController.text);
+    _titleEditingController.addListener(() => noteModel.entityBeingEdited.title = _titleEditingController.text);
     _contentEditingController.addListener(() => noteModel.entityBeingEdited.content = _contentEditingController.text);
   }
 
