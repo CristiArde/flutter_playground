@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import "../BaseModel.dart";
 
 /// A class representing this PIM entity type.
@@ -6,7 +8,7 @@ class Note {
   int id = -1;
   String title = "Default Title";
   String content = "Default content";
-  String color = "Grey";
+  String color = "grey";
 
 
 

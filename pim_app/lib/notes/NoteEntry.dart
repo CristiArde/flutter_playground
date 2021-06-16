@@ -55,17 +55,17 @@ class NoteEntry extends StatelessWidget {
                     ListTile(
                         leading: Icon(Icons.title),
                         title: TextFormField(
-                            decoration: InputDecoration(hintText: "Title"),
-                            controller: _titleEditingController,
-                            )),
+                          decoration: InputDecoration(hintText: "Title"),
+                          controller: _titleEditingController,
+                        )),
                     // Content.
                     ListTile(
                         leading: Icon(Icons.content_paste),
                         title: TextFormField(
-                            keyboardType: TextInputType.multiline,
-                            maxLines: 8,
-                            decoration: InputDecoration(hintText: "Content"),
-                            controller: _contentEditingController,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 8,
+                          decoration: InputDecoration(hintText: "Content"),
+                          controller: _contentEditingController,
                         )),
                     // Note color.
                     ListTile(
@@ -135,20 +135,19 @@ class NoteEntry extends StatelessWidget {
   }
 
   Future<void> _save(BuildContext inContext, NoteModel inModel) async {
-    if (!_formKey.currentState!.validate()) { return; }
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
 
     // Creating a new note.
     if (inModel.entityBeingEdited.id == -1) {
-
       print("## NotesEntry._save(): Creating: ${inModel.entityBeingEdited}");
       await NoteDBWorker.db.create(noteModel.entityBeingEdited);
 
       // Updating an existing note.
     } else {
-
       print("## NotesEntry._save(): Updating: ${inModel.entityBeingEdited}");
       await NoteDBWorker.db.update(noteModel.entityBeingEdited);
-
     }
 
     // Reload data from database to update list.
@@ -158,13 +157,7 @@ class NoteEntry extends StatelessWidget {
     noteModel.setStackIndex(0);
 
     // Show SnackBar.
-    ScaffoldMessenger.of(inContext).showSnackBar(
-        SnackBar(
-            backgroundColor : Colors.green,
-            duration : Duration(seconds : 2),
-            content : Text("Note saved")
-        )
-    );
+    ScaffoldMessenger.of(inContext).showSnackBar(SnackBar(backgroundColor: Colors.green, duration: Duration(seconds: 2), content: Text("Note saved")));
   }
 /* End build(). */
 
