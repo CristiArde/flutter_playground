@@ -5,12 +5,13 @@ import "../utils.dart" as utils;
 import "NoteModel.dart";
 
 class NoteDBWorker {
-  NoteDBWorker._();
-
   static final NoteDBWorker db = NoteDBWorker._();
 
   /// The one and only database instance.
   Database? _db;
+
+  //constructor
+  NoteDBWorker._();
 
   /// Get singleton instance, create if not available yet.
   ///

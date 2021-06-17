@@ -5,12 +5,12 @@ import 'package:scoped_model/scoped_model.dart';
 
 import 'NoteDBWorker.dart';
 
-class NoteEntry extends StatelessWidget {
+class NoteEntryWidget extends StatelessWidget {
   final TextEditingController _titleEditingController = TextEditingController();
   final TextEditingController _contentEditingController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  NoteEntry() {
+  NoteEntryWidget() {
     _titleEditingController.addListener(() => noteModel.entityBeingEdited.title = _titleEditingController.text);
     _contentEditingController.addListener(() => noteModel.entityBeingEdited.content = _contentEditingController.text);
   }
