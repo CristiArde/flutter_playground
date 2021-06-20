@@ -6,7 +6,7 @@ import "NoteDBWorker.dart" show NoteDBWorker;
 import "NoteModel.dart" show Note, NoteModel, noteModel;
 import 'package:flutter/cupertino.dart';
 
-class NoteList extends StatelessWidget {
+class NoteListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext inContext) {
     print("## noteList.build()");

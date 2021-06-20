@@ -7,7 +7,7 @@ class Task {
   bool complete = false;
 }
 
+class TaskModel extends BaseModel {}
 
-class TaskModel extends BaseModel{
 
-}
+TaskModel taskModel = TaskModel();

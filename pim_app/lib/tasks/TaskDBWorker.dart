@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:async/async.dart';
@@ -6,21 +5,23 @@ import "../utils.dart" as utils;
 import 'TaskModel.dart';
 
 class TaskDBWorker {
-  static final TaskDBWorker _instance = new TaskDBWorker._internal();
-  static late final Future<Database>? _database;
-  static late final _initDBMemoizer;
+  static final TaskDBWorker _instance = new TaskDBWorker._();
 
-  TaskDBWorker._internal() {
-    _initDBMemoizer = AsyncMemoizer<Database>();
-  }
+  Database? _database;
+  static late final _initDBMemoizer = AsyncMemoizer<Database>();
+
+  TaskDBWorker._();
 
   static TaskDBWorker get instance => _instance;
 
-  Future<Database> get database async =>
-      _database ??
-      await _initDBMemoizer.runOnce(() async {
-        return await _initDB();
-      });
+  Future get database async {
+    _database = (await _initDBMemoizer.runOnce(() async {
+      return await _initDB();
+    }))  ;
+
+    return _database!;
+  }
+
 
   Future<Database> _initDB() async {
     print("## Tasks TasksDBWorker.init()");
@@ -44,7 +45,7 @@ class TaskDBWorker {
     task.id = inMap["id"];
     task.description = inMap["description"];
     task.dueDate = inMap["dueDate"];
-    task.complete = inMap["completed"];
+    task.complete = inMap["completed"] == '0' ? false : true;
 
     print("## Tasks TasksDBWorker.taskFromMap(): task = $task");
 
@@ -61,7 +62,7 @@ class TaskDBWorker {
     map["id"] = inTask.id;
     map["description"] = inTask.description;
     map["dueDate"] = inTask.dueDate;
-    map["completed"] = inTask.complete;
+    map["completed"] = inTask.complete == false ? 0 : 1;
 
     print("## tasks TasksDBWorker.taskToMap(): map = $map");
 
@@ -126,6 +127,7 @@ class TaskDBWorker {
     print("## Tasks TasksDBWorker.update(): inTask = $task");
 
     Database db = await database;
+
     return await db.update("tasks", taskToMap(task), where: "id = ?", whereArgs: [task.id]);
   }
 

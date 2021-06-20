@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:pim_app/tasks/TaskWidget.dart';
 import 'notes/NoteWidget.dart';
 import "utils.dart" as utils;
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             ),
             body: TabBarView(
                 // children: [Appointments(), Contacts(), Notes(), Tasks()])),
-                children: [Container(), Container(), NoteWidget(), Container()])),
+                children: [Container(), Container(), NoteWidget(), TaskWidget()])),
       ),
     );
   }
