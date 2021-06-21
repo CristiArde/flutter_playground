@@ -8,7 +8,7 @@ class TaskDBWorker {
   static final TaskDBWorker _instance = new TaskDBWorker._();
 
   Database? _database;
-  static late final _initDBMemoizer = AsyncMemoizer<Database>();
+  static final _initDBMemoizer = AsyncMemoizer<Database>();
 
   TaskDBWorker._();
 

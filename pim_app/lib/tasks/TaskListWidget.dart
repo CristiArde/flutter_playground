@@ -16,6 +16,7 @@ class TaskListWidget extends StatelessWidget {
         child: ScopedModelDescendant(
           builder: (BuildContext context, Widget? child, TaskModel model) {
             return Scaffold(floatingActionButton: FloatingActionButton(
+              child: Icon(Icons.add, color: Colors.white),
               onPressed: () async {
                 taskModel.entityBeingEdited = new Task();
                 taskModel.setStackIndex(1);

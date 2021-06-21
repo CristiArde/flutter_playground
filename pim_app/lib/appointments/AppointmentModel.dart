@@ -19,3 +19,5 @@ class AppointmentModel extends BaseModel {
 
   String? get time => _time;
 }
+
+AppointmentModel appointmentModel = AppointmentModel();
